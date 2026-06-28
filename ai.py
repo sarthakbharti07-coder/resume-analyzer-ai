@@ -1,11 +1,13 @@
-from openai import OpenAI
-import json
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
+load_dotenv()  # ← Must be BEFORE Groq client is created
 
-client = OpenAI(api_key=os.getenv("API_KEY_here"))
+from groq import Groq
+import json
+
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+
 
 def analyze_resume(resume_text, user_goal):
 
@@ -34,9 +36,9 @@ Rules you must strictly follow:
 - Return ONLY valid JSON. No explanation text, no markdown, no extra formatting.
 """
 
-    try:
+    try:  # ← lowercase 'try'
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="llama3-70b-8192",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {
