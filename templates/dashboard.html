@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Welcome, {{ user }}</h2> <!-- Fix: users → user -->
+
+<div class="card">
+    <h3>Resume Analyser</h3>
+
+    <form method="post" enctype="multipart/form-data">
+        <textarea name="resume" placeholder="Enter your Resume here (optional)"></textarea>
+
+        <p>Or upload file</p>
+        <input type="file" name="file">
+
+        <input type="text" name="role" placeholder="What do you want to become? (e.g. Python Developer)">
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+{% if result %}
+<div class="result-card">
+
+    {% if result.error %}
+    <p style="color:red;">Error: {{ result.error }}</p>
+    {% else %}
+
+    <h3>Overall Rating: {{ result.overall_rating }}/10</h3>
+    <h3>Improvement Needed: {{ result.improvement_score }}%</h3>
+    <p><strong>Summary:</strong> {{ result.summary }}</p>
+
+    <h3>Pros</h3>
+    <ul>
+        {% for p in result.pros %}
+        <li>{{ p }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Cons</h3>
+    <ul>
+        {% for c in result.cons %}
+        <li>{{ c }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Improvement Steps</h3>
+    <ul>
+        {% for step in result.improvement_steps %}
+        <li>{{ step }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Career Options</h3>
+    <ul>
+        {% for career in result.career_options %}
+        <li>{{ career }}</li>
+        {% endfor %}
+    </ul>
+
+    {% endif %}
+
+</div>
+{% endif %}
+
+{% endblock %}

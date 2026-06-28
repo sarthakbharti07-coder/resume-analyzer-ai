@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f5f5f5;
+    color: black;
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+/* THIS WAS MISSING */
+.auth-card {
+    background: white;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-card h2 {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: 0.2s;
+    box-sizing: border-box;
+}
+
+.auth-card input:focus {
+    border-color: blue;
+    outline: none;
+}
+
+.auth-card button {
+    width: 100%;
+    margin-top: 18px;
+    padding: 12px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.auth-card button:hover {
+    background: blue;
+}
+
+.switch-auth {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.switch-auth a {
+    color: blue;
+    text-decoration: none;
+}
+
+.container {
+    width: 85%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+header {
+    background: black;
+    color: white;
+    padding: 18px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav {
+    float: right;
+}
+
+nav a {
+    color: whitesmoke;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: blue;
+}
+
+main {
+    margin-top: 40px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+h2 {
+    margin-bottom: 30px;
+}
+
+h3 {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    margin-top: 40px;
+}
+
+input[type="file"],
+input[type="text"] {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+input[name="role"] {
+    border-radius: 8px;
+    border: 1px solid white;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px;
+    background: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+button :hover {
+    background: blue;
+
+}
+
+ul {
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+footer {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    background: silver;
+    font-size: 15px;
+}

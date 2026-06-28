@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Your History</h2>
+
+{% for r in reports %}
+<div class="card">
+    <p><strong>Resume Preview:</strong> {{ r.resume[:200] }}...</p>
+    <hr>
+    <h3>Result</h3>
+    <p><strong>Rating:</strong> {{ r.result.overall_rating }}/10</p>
+    <p><strong>Improvement Needed:</strong> {{ r.result.improvement_score }}%</p>
+    <p><strong>Summary:</strong> {{ r.result.summary }}</p>
+
+    <h4>Pros</h4>
+    <ul>
+        {% for pro in r.result.pros %}
+        <li>{{ pro }}</li>
+        {% endfor %}
+    </ul>
+
+    <h4>Cons</h4>
+    <ul>
+        {% for con in r.result.cons %}
+        <li>{{ con }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}
+
+{% endblock %}
