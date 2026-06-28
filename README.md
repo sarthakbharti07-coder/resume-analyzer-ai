@@ -1,81 +1,149 @@
-# 🧠 AI Career Copilot
+# 🧠 Resume Analyzer AI
 
-An AI-powered resume analyzer built with Flask that gives brutally honest feedback on your resume and helps you plan your career path.
+An AI-powered resume analyzer built with Flask, Groq (LLaMA 3), and TiDB Cloud.
+Upload your resume (PDF/DOCX), enter your target job role, and get instant AI feedback instantly.
 
+---
 ## ✨ Features
 
-- 📄 Upload resume as PDF, DOCX, or paste text
-- 🎯 Target-role based analysis
-- ⭐ Resume rating out of 10
-- ✅ Pros & cons specific to your resume
-- 🗺️ Personalized improvement roadmap
-- 💼 Realistic career options based on current skills
-- 📊 Analysis history saved per user
-- 🔐 User authentication (signup/login)
+- 📄 Upload resume in PDF or DOCX format
+- 🎯 Enter your target job role
+- 🤖 AI analyzes your resume and returns:
+  - ⭐ Overall rating (out of 10)
+  - ✅ Pros and cons
+  - 📈 Improvement steps
+  - 💼 Career options
+  - 📝 Summary verdict
 
+---
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
 |---|---|
 | Backend | Python, Flask |
-| AI | Groq API (Llama 3.3 70B) |
+| AI Model | LLaMA 3 via Groq API |
 | Database | TiDB Cloud (MySQL) |
+| File Parsing | pdfplumber, python-docx |
 | ORM | SQLAlchemy |
-| Frontend | HTML, CSS, Jinja2 |
-| File Parsing | PyPDF2, python-docx |
 
-## 🚀 Getting Started
+---
+## ✅ Prerequisites
 
-### Prerequisites
-- Python 3.10+
-- Groq API key (free at [console.groq.com](https://console.groq.com))
-- TiDB Cloud account (free at [tidbcloud.com](https://tidbcloud.com))
+Make sure you have these installed before starting:
 
-### Installation
+- Python 3.10 or above → https://www.python.org/downloads/
+- Git → https://git-scm.com/download/win
+- A free Groq API key → https://console.groq.com/keys
+- A TiDB Cloud account → https://tidbcloud.com
 
-1. Clone the repo
+---
+## ⚙️ Setup Instructions
+
+### Step 1 — Clone the repository
 ```bash
-   git clone https://github.com/yourusername/ai-career-copilot.git
-   cd ai-career-copilot
+git clone https://github.com/sarthakbharti07-coder/resume-analyzer-ai.git
+cd resume-analyzer-ai
+```
+### Step 2 — Create a virtual environment
+```bash
+python -m venv venv
+```
+Activate it:
+
+**Windows:**
+```bash
+venv\Scripts\activate
+```
+**Mac/Linux:**
+```bash
+source venv/bin/activate
+```
+You should see `(venv)` appear in your terminal.
+
+### Step 3 — Install dependencies
+```bash
+pip install -r requirements.txt
 ```
 
-2. Create and activate virtual environment
-```bash
-   python -m venv venv
-   venv\Scripts\activate  # Windows
+### Step 4 — Create the `.env` file
+
+In the root of the project (same folder as `app.py`), create a file named `.env`:
+
+**Windows:**
+```powershell
+Set-Content -Path ".env" -Value ""
+code .env
 ```
 
-3. Install dependencies
+**Mac/Linux:**
 ```bash
-   pip install -r requirements.txt
+touch .env
 ```
 
-4. Set up environment variables — create a `.env` file:
+Paste the following inside `.env`:
 
-5. Run the app
+GROQ_API_KEY=your_groq_api_key_here
+DATABASE_URL=mysql+pymysql://username:password@host:4000/dbname
+
+
+**How to get these values:**
+
+- `GROQ_API_KEY` → Go to https://console.groq.com/keys → Create API Key → Copy it
+- `DATABASE_URL` → Go to TiDB Cloud → Your Cluster → Connect → Copy the connection string
+  - Format: `mysql+pymysql://username:password@host:4000/database_name`
+
+> ⚠️ Never share your `.env` file or commit it to GitHub!
+
+### Step 5 — Run the app
 ```bash
-   python app.py
+python app.py
 ```
 
-6. Open `http://127.0.0.1:5000`
+### Step 6 — Open in your browser
+---
 
-## 📸 Screenshots
+## 📁 Project Structure
+resume-analyzer-ai/
 
-<!-- Add screenshots here after taking them -->
+├── static/            # CSS, JS, images
 
-## 🔮 Future Plans
+├── templates/         # HTML templates
 
-- [ ] Password hashing
-- [ ] Export analysis as PDF
-- [ ] LinkedIn profile analyzer
-- [ ] Email report delivery
-- [ ] Dark mode
+├── app.py             # Main Flask app
 
-## 👤 Author
+├── db.py              # Database connection
 
-**Sarthak Bharti**  
-[GitHub](https://github.com/yourusername) • [LinkedIn](https://linkedin.com/in/yourprofile)
+├── models.py          # Database models
 
-## 📄 License
+├── resume_ai.py       # AI analysis logic
 
-MIT License
+├── ai.py              # Groq API helper
+
+├── requirements.txt   # Python dependencies
+
+├── .gitignore         # Files to ignore in Git
+
+└── .env               # Your secret keys (never commit this!)
+---
+
+## ❗ Common Errors & Fixes
+
+| Error | Fix |
+|---|---|
+| `ModuleNotFoundError` | Run `pip install -r requirements.txt` |
+| `GROQ_API_KEY` is None | Check your `.env` file exists in the root folder |
+| `Expected string or URL object, got None` | Check `DATABASE_URL` in your `.env` file |
+| `git: command not found` | Install Git from https://git-scm.com |
+| `python: command not found` | Install Python from https://python.org |
+
+---
+## 🔒 Security Notes
+
+- Your `.env` file is listed in `.gitignore` — it will never be pushed to GitHub
+- Never hardcode API keys directly in your Python files
+- Regenerate your API keys if you accidentally expose them
+---
+## 👨‍💻 Author
+
+**Sarthak Bharti**
+GitHub: [@sarthakbharti07-coder](https://github.com/sarthakbharti07-coder)
